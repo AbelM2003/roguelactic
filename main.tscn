@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdefvvx1c2qig"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_588na"]
+[ext_resource type="Texture2D" uid="uid://ll7jvbv0aeea" path="res://Sprites/spaceship.png" id="1_t8f0m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8x5d"]
+size = Vector2(4, 9)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d6v2n"]
+distance = -240.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_evtys"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(209, 224)
+motion_mode = 1
+script = ExtResource("1_588na")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture_filter = 1
+texture = ExtResource("1_t8f0m")
+
+[node name="Hitbox" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_s8x5d")
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+
+[node name="Bottom Wall" type="CollisionShape2D" parent="Boundaries"]
+shape = SubResource("WorldBoundaryShape2D_d6v2n")
+
+[node name="Top Wall" type="CollisionShape2D" parent="Boundaries"]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_evtys")
+
+[node name="Left Wall" type="CollisionShape2D" parent="Boundaries"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_evtys")
+
+[node name="Right Wall" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(426, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_evtys")
