@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdefvvx1c2qig"]
+[gd_scene load_steps=9 format=3 uid="uid://bdefvvx1c2qig"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_588na"]
 [ext_resource type="Texture2D" uid="uid://ll7jvbv0aeea" path="res://Sprites/spaceship.png" id="1_t8f0m"]
+[ext_resource type="Texture2D" uid="uid://bm0qg61jgqk33" path="res://Sprites/space.png" id="3_n3viq"]
+[ext_resource type="Script" path="res://background.gd" id="3_n76le"]
+[ext_resource type="Texture2D" uid="uid://b7q3ul6kfppnu" path="res://Sprites/farstars.png" id="4_rw264"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8x5d"]
 size = Vector2(4, 9)
@@ -43,3 +46,24 @@ shape = SubResource("WorldBoundaryShape2D_evtys")
 position = Vector2(426, 0)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_evtys")
+
+[node name="Background" type="ParallaxBackground" parent="."]
+script = ExtResource("3_n76le")
+
+[node name="SpaceLayer" type="ParallaxLayer" parent="Background"]
+motion_mirroring = Vector2(0, 240)
+
+[node name="space" type="TextureRect" parent="Background/SpaceLayer"]
+offset_right = 427.0
+offset_bottom = 243.0
+texture = ExtResource("3_n3viq")
+stretch_mode = 1
+
+[node name="FarStarsLayer" type="ParallaxLayer" parent="Background"]
+motion_mirroring = Vector2(0, 240)
+
+[node name="farstars" type="TextureRect" parent="Background/FarStarsLayer"]
+offset_right = 426.0
+offset_bottom = 241.0
+texture = ExtResource("4_rw264")
+stretch_mode = 1
